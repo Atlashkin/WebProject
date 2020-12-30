@@ -1,0 +1,75 @@
+http://127.0.0.1:9000
+CreateReadUpdateDelete
+Read - GET
+Create - POST
+Update PUT*
+Delete - DELETE
+
+ 
+
+user
+GET http://127.0.0.1:9000/api/v1/user/login?[email][password]
+JWT Token
+GET http://127.0.0.1:9000/api/v1/user/logout : JWT Token
+GET http://127.0.0.1:9000/api/v1/user
+{avatar, created, modified}
+
+POST http://127.0.0.1:9000/api/v1/user
+{name, avatar}
+
+ 
+
+game
+GET http://127.0.0.1:9000/api/v1/game
+[
+{id, user, scenario, scene, cost, started, lastaccess}
+]
+...
+get users by id
+
+ 
+
+POST, PUT http://127.0.0.1:9000/api/v1/game?[id]
+{scenario, scene, cost}
+
+
+ 
+scenario
+GET http://127.0.0.1:9000/api/v1/scenario?[id]
+[
+ {id, name, version, copyright, released,  start, description,created,modified}
+]
+
+ POST, PUT http://127.0.0.1:9000/api/v1/scenario?[id]
+{name, version,copyright, description, start} 
+get scenario by id
+
+
+scene
+GET http://127.0.0.1:9000/api/v1/scene?[id]
+[
+{id, parent, order, islast, name, description,created,modified}
+]
+get scene by id
+POST, PUT http://127.0.0.1:9000/api/v1/scene?[id]
+{scenario, replica, replica, decoration}
+
+decoration
+GET http://127.0.0.1:9000/api/v1/decoration?[id]
+{id, scene, name, value}
+PUT,POST http://127.0.0.1:9000/api/v1/decoration?[id]
+{scene, name, value} 
+
+replica
+GET http://127.0.0.1:9000/api/v1/replica?[id]
+{id, scene, content}
+PUT,POST http://127.0.0.1:9000/api/v1/replica?[id]
+{scene, content} 
+
+response
+[
+ {id, name, version, copyright, released,  start, description,created,modified}
+]
+
+ POST, PUT http://127.0.0.1:9000/api/v1/scenario?[id]
+{replica, order, content, cost,next} 

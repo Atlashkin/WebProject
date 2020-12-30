@@ -1,0 +1,80 @@
+table user {
+  id int [not null, primary key]
+  email varchar(255) [not null, unique]
+  name varchar(63) [not null]
+  password char(40) [note: 'SHA1(password+salt)']
+  avatar varchar(255)
+  created datetime [not null, default: 'now()']
+  modified datetime [not null, default: 'now()']
+}
+
+table game {
+  id int [not null, primary key]
+  user int [not null, ref:> user.id]
+  scenario int [not null, ref:> scenario.id]
+  scene int [null, ref:> scene.id]
+  cost int [not null]
+  started datetime [not null, default: 'now()']
+  lastaccess datetime [not null, default: 'now()']
+  indexes {
+    (user, scenario, started) [unique]
+  }
+}
+
+
+table scenario {
+  id int [not null, primary key]
+  name varchar(63) [unique, not null]
+  version varchar(31) [not null, note:'1.1.1']
+  copyright varchar(254)
+  released datetime
+  start int [not null, ref:> scene.id]
+  description varchar(1023)
+  created datetime [not null, default: 'now()']
+  modified datetime [not null, default: 'now()']
+  modifiedby int [not null, ref:> user.id]
+}
+
+
+table scene {
+  id int [not null, primary key]
+  parent int [ref:> scene.id]
+  order int [not null]
+  islast boolean
+  name varchar(63) [unique, not null, note: 'default name: Scene + Number']
+  description varchar(1023)
+  created datetime [not null, default: 'now()']
+  modified datetime [not null, default: 'now()']
+  modifiedby int [not null, ref:> user.id]
+  indexes {
+    (parent, order) [unique]
+  }
+}
+
+
+table decoration {
+  id int [not null, primary key]
+  scene int [not null, ref:> scene.id]
+  name varchar(63) [not null]
+  value varchar(253)
+  indexes {
+    (scene,name) [unique]
+  }
+}
+
+
+table replica {
+  id int [not null, primary key]
+  scene int [not null, ref:> scene.id]
+  content varchar(1023) [not null, note: 'html format']
+}
+
+
+table response {
+  id int [not null, primary key]
+  replica int [not null, ref:> replica.id]
+  order int
+  content varchar(512) [not null, note: 'html format']
+  cost int [not null]
+  next int [not null, ref:> scene.id]
+}
