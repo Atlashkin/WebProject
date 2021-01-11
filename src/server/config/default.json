@@ -1,5 +1,0 @@
-{
-  "serverPort" : 5000,
-  "dbUrl": "mongodb+srv://User:UserPass@cluster0.efmip.mongodb.net/cluster0?retryWrites=true&w=majority",
-  "secretKey": "mern-secret-key"
-}
