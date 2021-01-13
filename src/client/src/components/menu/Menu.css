@@ -1,0 +1,30 @@
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  height: 600px;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  align-self: center;
+  margin-top: 50px;
+}
+.menu__header {
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+.menu__btn{
+  border: none;
+  background-color: #566885;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  padding: 5px 10px;
+  font-size: 30px;
+  margin-top: 30px;
+  width: 400px;
+
+}

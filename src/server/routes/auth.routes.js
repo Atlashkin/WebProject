@@ -51,7 +51,7 @@ router.post('/login', async (req,res) => {
             if(!isPassValid) {
                 return res.status(400).json({message:"Invalid password"})
             }
-            const token = jwt.sign({id: user.id},config.get("secretKey"), {expressIn: '1h'})
+            const token = jwt.sign({id: user.id},config.get("secretKey"))
             return res.json({
                 token,
                 user: {
@@ -73,7 +73,7 @@ router.get('/auth', authMiddleware,
     async (req,res) => {
         try {
             const user = await User.findOne({_id: req.user.id})
-            const token = jwt.sign({id: user.id},config.get("secretKey"), {expressIn: '1h'})
+            const token = jwt.sign({id: user.id},config.get("secretKey"))
             return res.json({
                 token,
                 user: {
@@ -88,5 +88,6 @@ router.get('/auth', authMiddleware,
             res.send({message: "Server error"})
         }
     })
+
 
 module.exports = router
