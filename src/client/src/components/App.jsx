@@ -7,6 +7,7 @@ import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../actions/user";
 import Menu from "./menu/Menu"
+import Game from "./game/Game"
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -29,8 +30,9 @@ function App() {
                     </Switch>
                     :
                         <Switch>
-                            <Route  component={Menu}/>
+                            <Route  component={Game}/>
                         </Switch>
+
                     }
                 </div>
             </div>

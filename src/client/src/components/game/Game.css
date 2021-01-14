@@ -1,0 +1,45 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 600px;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    align-self: center;
+    margin-top: 50px;
+
+}
+
+
+
+
+
+.game_dialog{
+
+
+
+
+    font-size:17px;
+    font-family: 'Nunito', sans-serif;
+    width:800px;
+    height:300px;
+    border:8px solid rgba(0,0,0,0.3);
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    background:black;
+    margin-top: 50px;
+
+
+}
+.fine1 {
+
+    width: 400px;
+    height:400px;
+    align-self: flex-start;
+
+}
+
+

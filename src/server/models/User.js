@@ -9,3 +9,4 @@ const User = new Schema({
 })
 
 module.exports = model ('User',User)
+
