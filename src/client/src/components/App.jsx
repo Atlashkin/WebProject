@@ -7,6 +7,8 @@ import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../actions/user";
 import Menu from "./menu/Menu"
+import Editor from "./editor/Editor";
+import EditScene from "./editor/EditScene";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -27,10 +29,10 @@ function App() {
                         <Route path="/registration" component={Registration}/>
                         <Route path="/login" component={Login}/>
                     </Switch>
-                    :
-                        <Switch>
-                            <Route  component={Menu}/>
-                        </Switch>
+                    : <Switch>
+                            {/*<Route component={Menu}/>*/}
+                            <Route component={Editor}/>
+                    </Switch>
                     }
                 </div>
             </div>
