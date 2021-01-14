@@ -7,37 +7,34 @@ import Login from "./authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from "../actions/user";
 import Menu from "./menu/Menu"
-import Editor from "./editor/Editor";
-import EditScene from "./editor/EditScene";
+import Game from "./game/Game"
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(auth())
     }, [dispatch])
-
-
     return (
         <BrowserRouter>
             <div className='app'>
                 <Navbar/>
                 <div className="wrap">
                     {!isAuth ?
-                    <Switch>
-                        <Route path="/registration" component={Registration}/>
-                        <Route path="/login" component={Login}/>
-                    </Switch>
-                    : <Switch>
-                            {/*<Route component={Menu}/>*/}
-                            <Route component={Editor}/>
-                    </Switch>
+                        <Switch>
+                            <Route path="/registration" component={Registration}/>
+                            <Route path="/login" component={Login}/>
+                        </Switch>
+                        :
+                        <Switch>
+                            <Route  component={Menu}/>
+                            <Route  component={Game}/>
+                        </Switch>
+
                     }
                 </div>
             </div>
         </BrowserRouter>
     );
 }
-
 export default App;
